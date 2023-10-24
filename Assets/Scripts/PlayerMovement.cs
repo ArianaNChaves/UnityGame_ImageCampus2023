@@ -30,12 +30,12 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-
     }
 
     private void Move()
     {
         Vector3 movement = new Vector3(_currentDirection.x, 0, _currentDirection.y) * (speed * Time.fixedDeltaTime);
+       // transform.position += movement;
         _rigidbody.MovePosition(_rigidbody.position + movement);
     }
     private void EndJump()
