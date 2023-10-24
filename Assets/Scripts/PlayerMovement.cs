@@ -35,8 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector3 movement = new Vector3(_currentDirection.x, 0, _currentDirection.y) * (speed * Time.fixedDeltaTime);
-       // transform.position += movement;
-        _rigidbody.MovePosition(_rigidbody.position + movement);
+        _rigidbody.AddForce(movement, ForceMode.VelocityChange);
     }
     private void EndJump()
     {
