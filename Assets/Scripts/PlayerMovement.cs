@@ -34,8 +34,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movement = new Vector3(_currentDirection.x, 0, _currentDirection.y) * (speed * Time.fixedDeltaTime);
-        _rigidbody.AddForce(movement, ForceMode.VelocityChange);
+        if (_currentDirection != Vector2.zero)
+        {
+            Vector3 movement = new Vector3(_currentDirection.x, 0, _currentDirection.y).normalized * speed;
+            _rigidbody.velocity = new Vector3(movement.x, _rigidbody.velocity.y, movement.z);
+        }
+        else
+        {
+            _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+        }
     }
     private void EndJump()
     {
@@ -56,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         _isJumping = true;
         Debug.Log("Empezo el salto" + _isJumping);
-
     }
 
     private void OnDisable()
