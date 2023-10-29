@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
         _playerInput.Player.Jump.started += ctx => StartJump();
         _playerInput.Enable();
     }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void FixedUpdate()
     {
         Move();
