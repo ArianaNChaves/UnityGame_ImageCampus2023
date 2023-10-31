@@ -8,10 +8,6 @@ public class EnableDisableController : MonoBehaviour
     [SerializeField] private List<GameObject> objectsToEnable;
     [Header("Objects to Disable")]
     [SerializeField] private List<GameObject> objectsToDisable;
-
-    // Start is called before the first frame update
-
-    // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

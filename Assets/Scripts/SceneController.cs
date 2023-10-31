@@ -14,8 +14,6 @@ public class SceneController : MonoBehaviour
     private string _initialScene = "InitialScene";
 
     public string CurrentScene => _currentScene;
-  //  public IReadOnlyList<string> ScenesLoaded => _scenesLoaded.AsReadOnly();
-
     public static SceneController Instance { get; private set; }
 
     private void Awake()

@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour
     {
         _playerInput.Disable();
     }
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Ground"))
