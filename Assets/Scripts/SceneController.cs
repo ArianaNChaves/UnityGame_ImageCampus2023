@@ -11,9 +11,7 @@ public class SceneController : MonoBehaviour
     private List<string> _scenesLoaded = new List<string>();
     private string _currentScene;
     
-    private string _initialScene = "InitialScene";
-
-    public string CurrentScene => _currentScene;
+    private string _initialScene = "MainMenu";
     public static SceneController Instance { get; private set; }
 
     private void Awake()
@@ -42,10 +40,27 @@ public class SceneController : MonoBehaviour
         {
             StartCoroutine(LoadSceneAsyncCoroutine(sceneName));
         }
-        else
+        else if (_currentScene == sceneName)
         {
             Debug.LogWarning("Escena " + sceneName + " ya esta cargada");
+
         }
+        else
+        {
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        }
+        Debug.LogWarning("LoadSceneAsync - error");
+    }
+    
+    public void LoadScene(string sceneName)
+    {
+        if (!_scenesLoaded.Contains(sceneName))
+        {
+            _scenesLoaded.Add(sceneName);
+        }
+        SceneManager.LoadScene(sceneName);
+        _currentScene = sceneName;
+        Debug.Log("Se cargo la escena: " + sceneName);
     }
 
     private IEnumerator LoadSceneAsyncCoroutine(string sceneName)
@@ -56,7 +71,6 @@ public class SceneController : MonoBehaviour
             CurrentSceneLoadingProgress?.Invoke(loadingNewScene.progress);
             yield return null;
         }
-
         _scenesLoaded.Add(sceneName);
         _currentScene = sceneName;
     }
@@ -72,5 +86,10 @@ public class SceneController : MonoBehaviour
         {
             Debug.LogError("Escena no encontrada: " + sceneName);
         }
+    }
+
+    public string CurrentScene()
+    {
+        return _currentScene;
     }
 }
