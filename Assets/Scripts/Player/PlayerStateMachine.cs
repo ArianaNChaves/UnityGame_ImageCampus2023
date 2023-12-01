@@ -22,7 +22,7 @@ namespace Player
             _currentState = MovementState.Grounded;
             _airPlayerController = GetComponent<AirPlayerController>();
             _playerController = GetComponent<PlayerController>();
-           // _airPlayerController.DeactivateController();
+            //_airPlayerController.DeactivateController();
         }
 
         public void SetCurrentState(MovementState state)

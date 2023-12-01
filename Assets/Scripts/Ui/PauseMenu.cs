@@ -6,9 +6,7 @@ namespace Ui
 {
     public class PauseMenu : MonoBehaviour
     {
-        
         public GameObject pauseMenu;
-
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -16,7 +14,7 @@ namespace Ui
                 pauseMenu.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                Time.timeScale = 0f;  
+                Time.timeScale = 0f;
             }
         }
 
