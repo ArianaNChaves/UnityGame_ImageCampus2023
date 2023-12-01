@@ -16,7 +16,7 @@ namespace Ui
                 pauseMenu.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                Time.timeScale = 0f;
+                Time.timeScale = 0f;  
             }
         }
 

@@ -37,15 +37,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Run"",
-                    ""type"": ""Value"",
-                    ""id"": ""2c5d14d6-e143-44a9-a08f-297ce99cbc2d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""5716cead-1652-4b7d-ae8d-3086f578df37"",
@@ -71,6 +62,42 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExtendHook"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc60e4f4-fc72-44b5-8420-3456504f84ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShortenHook"",
+                    ""type"": ""Button"",
+                    ""id"": ""ffdabfe7-6eff-4087-bb33-8022e0b568d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HookLateralMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""23bea634-7c23-4f07-aaf7-7da7151b4a86"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HookForwardMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""9b7af257-5c68-4aa4-b145-b7bf947834ad"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -131,17 +158,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2acf5cff-db3f-439b-a7e0-afc17517f2b2"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5b191d54-b26c-4163-8550-2b780cb9f8c4"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -172,6 +188,94 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""Hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""884deda3-5578-40c3-8585-3c1fe40c9c9f"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExtendHook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a91d160a-ac85-4400-b3c1-008586ccd8be"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShortenHook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e3bae0a0-c244-4800-a8b2-b3df68a45b24"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookLateralMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5d5cac35-2072-4262-ae9f-74ed2db66813"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookLateralMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""08c9e749-0dbe-440e-964d-47ef0ea66d23"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookLateralMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""53879b65-e3d6-4b1a-a749-12acfb7d68ac"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookForwardMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a4831073-35e3-4d95-8e8c-b6779b7fdaa0"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookForwardMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8b6bc0c5-c5ea-49bf-a906-996d7511e85e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookForwardMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -240,10 +344,13 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Hook = m_Player.FindAction("Hook", throwIfNotFound: true);
+        m_Player_ExtendHook = m_Player.FindAction("ExtendHook", throwIfNotFound: true);
+        m_Player_ShortenHook = m_Player.FindAction("ShortenHook", throwIfNotFound: true);
+        m_Player_HookLateralMovement = m_Player.FindAction("HookLateralMovement", throwIfNotFound: true);
+        m_Player_HookForwardMovement = m_Player.FindAction("HookForwardMovement", throwIfNotFound: true);
         // Ui
         m_Ui = asset.FindActionMap("Ui", throwIfNotFound: true);
         m_Ui_Mouse = m_Ui.FindAction("Mouse", throwIfNotFound: true);
@@ -310,19 +417,25 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Hook;
+    private readonly InputAction m_Player_ExtendHook;
+    private readonly InputAction m_Player_ShortenHook;
+    private readonly InputAction m_Player_HookLateralMovement;
+    private readonly InputAction m_Player_HookForwardMovement;
     public struct PlayerActions
     {
         private @InputMap m_Wrapper;
         public PlayerActions(@InputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Hook => m_Wrapper.m_Player_Hook;
+        public InputAction @ExtendHook => m_Wrapper.m_Player_ExtendHook;
+        public InputAction @ShortenHook => m_Wrapper.m_Player_ShortenHook;
+        public InputAction @HookLateralMovement => m_Wrapper.m_Player_HookLateralMovement;
+        public InputAction @HookForwardMovement => m_Wrapper.m_Player_HookForwardMovement;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -335,9 +448,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Run.started += instance.OnRun;
-            @Run.performed += instance.OnRun;
-            @Run.canceled += instance.OnRun;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -347,6 +457,18 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Hook.started += instance.OnHook;
             @Hook.performed += instance.OnHook;
             @Hook.canceled += instance.OnHook;
+            @ExtendHook.started += instance.OnExtendHook;
+            @ExtendHook.performed += instance.OnExtendHook;
+            @ExtendHook.canceled += instance.OnExtendHook;
+            @ShortenHook.started += instance.OnShortenHook;
+            @ShortenHook.performed += instance.OnShortenHook;
+            @ShortenHook.canceled += instance.OnShortenHook;
+            @HookLateralMovement.started += instance.OnHookLateralMovement;
+            @HookLateralMovement.performed += instance.OnHookLateralMovement;
+            @HookLateralMovement.canceled += instance.OnHookLateralMovement;
+            @HookForwardMovement.started += instance.OnHookForwardMovement;
+            @HookForwardMovement.performed += instance.OnHookForwardMovement;
+            @HookForwardMovement.canceled += instance.OnHookForwardMovement;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -354,9 +476,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Run.started -= instance.OnRun;
-            @Run.performed -= instance.OnRun;
-            @Run.canceled -= instance.OnRun;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -366,6 +485,18 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Hook.started -= instance.OnHook;
             @Hook.performed -= instance.OnHook;
             @Hook.canceled -= instance.OnHook;
+            @ExtendHook.started -= instance.OnExtendHook;
+            @ExtendHook.performed -= instance.OnExtendHook;
+            @ExtendHook.canceled -= instance.OnExtendHook;
+            @ShortenHook.started -= instance.OnShortenHook;
+            @ShortenHook.performed -= instance.OnShortenHook;
+            @ShortenHook.canceled -= instance.OnShortenHook;
+            @HookLateralMovement.started -= instance.OnHookLateralMovement;
+            @HookLateralMovement.performed -= instance.OnHookLateralMovement;
+            @HookLateralMovement.canceled -= instance.OnHookLateralMovement;
+            @HookForwardMovement.started -= instance.OnHookForwardMovement;
+            @HookForwardMovement.performed -= instance.OnHookForwardMovement;
+            @HookForwardMovement.canceled -= instance.OnHookForwardMovement;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -440,10 +571,13 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnHook(InputAction.CallbackContext context);
+        void OnExtendHook(InputAction.CallbackContext context);
+        void OnShortenHook(InputAction.CallbackContext context);
+        void OnHookLateralMovement(InputAction.CallbackContext context);
+        void OnHookForwardMovement(InputAction.CallbackContext context);
     }
     public interface IUiActions
     {

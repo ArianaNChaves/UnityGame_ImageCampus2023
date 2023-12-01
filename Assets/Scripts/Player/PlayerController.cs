@@ -24,6 +24,7 @@ namespace Player
         [SerializeField] private float gravity;
         [SerializeField] private float maxFallSpeed;
         
+        private PlayerStateMachine _playerStateMachine;
         private bool _isReadyToJump;
         private float _horizontalInput;
         private float _verticalInput;
@@ -31,40 +32,50 @@ namespace Player
         private InputMap _playerInput;
         private Rigidbody _rigidbody;
         private bool _isGrounded;
-        
-        public event Action<InputAction.CallbackContext> HookActionPerformed;
-        public event Action<InputAction.CallbackContext> HookActionCanceled;
+
         private void Awake()
         {
             _playerInput = new InputMap();
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.freezeRotation = true;
+            _playerStateMachine = GetComponent<PlayerStateMachine>();
         }
 
         private void Start()
         {
-            OnEnable();
+             OnEnable();
             _isReadyToJump = true;
         }
 
-        private void OnEnable()
+        public void ActivateController()
+        {
+            _playerInput.Player.Move.performed += OnMovePerformed;
+            _playerInput.Player.Move.canceled += OnMoveCanceled;
+            _playerInput.Player.Jump.started += OnJumpStarted;
+        }
+        public void DeactivateController()
+        {
+            _playerInput.Player.Move.performed -= OnMovePerformed;
+            _playerInput.Player.Move.canceled -= OnMoveCanceled;
+            _playerInput.Player.Jump.started -= OnJumpStarted;
+        }
+
+        public void OnEnable()
         {
             _playerInput.Enable();
             _playerInput.Player.Move.performed += OnMovePerformed;
             _playerInput.Player.Move.canceled += OnMoveCanceled;
             _playerInput.Player.Jump.started += OnJumpStarted;
-            _playerInput.Player.Hook.performed += OnHookPerformed;
-            _playerInput.Player.Hook.canceled += OnHookCanceled;
+
         }
 
-        private void OnDisable()
+        public void OnDisable()
         {
             _playerInput.Disable();
             _playerInput.Player.Move.performed -= OnMovePerformed;
             _playerInput.Player.Move.canceled -= OnMoveCanceled;
             _playerInput.Player.Jump.started -= OnJumpStarted;
-            _playerInput.Player.Hook.performed -= OnHookPerformed;
-            _playerInput.Player.Hook.canceled -= OnHookCanceled;
+
         }
 
         private void FixedUpdate()
@@ -86,15 +97,6 @@ namespace Player
             {
                 _rigidbody.AddForce(_moveDirection.normalized * (moveSpeed * airMultiplier), ForceMode.Force);
             }
-        }
-
-        private void OnHookPerformed(InputAction.CallbackContext context)
-        {
-            HookActionPerformed?.Invoke(context);
-        }
-        private void OnHookCanceled(InputAction.CallbackContext context)
-        {
-            HookActionCanceled?.Invoke(context);
         }
         private void OnJumpStarted(InputAction.CallbackContext context)
         {
@@ -158,8 +160,10 @@ namespace Player
         private void PlayerFall()
         {
             if (_isGrounded) return;
+            
             float gravityForce = gravity * fallMultiplier;
             _rigidbody.AddForce(Vector3.down * gravityForce, ForceMode.Acceleration);
+            
             if (_rigidbody.velocity.y < -maxFallSpeed)
             {
                 var velocity = _rigidbody.velocity;
