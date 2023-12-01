@@ -39,7 +39,6 @@ namespace Player
 
         [Header("Air Movement")] 
         [SerializeField] private float horizontalForce;
-        [SerializeField] private float forwardForce;
         [SerializeField] private Transform orientation;
 
         private PlayerStateMachine _playerStateMachine;
