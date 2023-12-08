@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,7 @@ namespace Ui
         public void Play(string sceneName)
         {
             SceneController.Instance.LoadScene(sceneName);
+            SceneController.Instance.LastestLevel("Level_1");
         }
 
         public void Quit()

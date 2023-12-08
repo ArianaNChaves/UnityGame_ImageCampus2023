@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -27,8 +28,8 @@ namespace Ui
         }
         public void Quit()
         {
-            Application.Quit();
-            Debug.Log("Quit");
+            SceneController.Instance.LoadScene("MainMenu");
+            Debug.Log("Go to main menu");
         }
     }
 }

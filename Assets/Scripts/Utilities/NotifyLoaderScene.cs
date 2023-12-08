@@ -1,25 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class NotifyLoaderScene : MonoBehaviour
+namespace Utilities
 {
-    public string sceneToLoad;
-    // Start is called before the first frame update
-    void Start()
+    public class NotifyLoaderScene : MonoBehaviour
     {
-        
-    }
+        public void LoadScene(string scene)
+        {
+            SceneController.Instance.LoadScene(scene);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        SceneController.Instance.LoadSceneAsync(sceneToLoad);
+        public void LoadLastestLevel()
+        {
+            SceneController.Instance.LoadLastestLevel();
+        }
     }
 }
