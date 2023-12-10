@@ -25,7 +25,12 @@ namespace Managers
 
         private void Start()
         {
-            PlayMusic("Background");
+            if (musicSource.clip == null)
+            {
+                PlayMusic("Menu");
+                
+            }
+            
         }
 
         public void PlayMusic(string musicName)
@@ -41,7 +46,6 @@ namespace Managers
                 musicSource.Play();
             }
         }
-
         public void PlayEffect(string effectName)
         {
             Sound effect = Array.Find(sfxSounds, x => x.soundName == effectName);
@@ -54,16 +58,7 @@ namespace Managers
                 sfxSource.PlayOneShot(effect.clip);
             }
         }
-
-        public void ToggleMusic()
-        {
-            musicSource.mute = !musicSource.mute;
-        }
-        public void ToggleSfx()
-        {
-            sfxSource.mute = !sfxSource.mute;
-        }
-
+        
         public void MusicVolume(float volume)
         {
             musicSource.volume = volume;

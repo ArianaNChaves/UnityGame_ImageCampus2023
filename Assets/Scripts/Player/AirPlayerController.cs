@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -72,12 +73,10 @@ namespace Player
             ValidateHookPoints();
             if (_playerInput.Player.ShortenHook.inProgress)
             {
-                Debug.Log("Acrotndo");
                 ShortenHook();
             }
             if (_playerInput.Player.ExtendHook.inProgress)
             {
-                Debug.Log("Extendiendo");
                 ExtendHook();
             }
         }
@@ -98,6 +97,8 @@ namespace Player
             _playerStateMachine.SetCurrentState(PlayerStateMachine.MovementState.Swinging);
             if (_predictionHit.point == Vector3.zero) return;
             
+               // AudioManager.Instance.PlayEffect("Hook");
+                
                 _hookPoint = _predictionHit.point;
                 _joint = gameObject.AddComponent<SpringJoint>();
                 _joint.autoConfigureConnectedAnchor = false;
@@ -174,34 +175,34 @@ namespace Player
             _playerInput.Player.ExtendHook.performed -= OnExtendHookPerformed;
             _playerInput.Player.ShortenHook.performed -= OnShortenHookPerformed;
         }
-
+        
         private void ValidateHookPoints()
         {
             var position = hookCamera.position;
             var forward = hookCamera.forward;
 
-            Physics.SphereCast(position, predictionSphereCastRadius, forward, out var sphereCastHit,
-                maxDistance, whatIsGrapple);
-
             Physics.Raycast(position, forward, out var raycastHit, maxDistance, whatIsGrapple);
+            Physics.SphereCast(position, predictionSphereCastRadius, forward, out var sphereCastHit, maxDistance, whatIsGrapple);
 
-            Vector3 realHitPoint;
-            if (raycastHit.point != Vector3.zero)
-            {
-                realHitPoint = raycastHit.point;
-            }
-            else if (sphereCastHit.point != Vector3.zero)
+            Vector3 realHitPoint = Vector3.zero;
+            
+              if (raycastHit.point != Vector3.zero)
+              {
+                  realHitPoint = raycastHit.point;
+                  _predictionHit = raycastHit;
+              }
+              else if (sphereCastHit.point != Vector3.zero)
             {
                 realHitPoint = sphereCastHit.point;
+                _predictionHit = sphereCastHit;
             }
             else
             {
-                realHitPoint = Vector3.zero;
+                _predictionHit = new RaycastHit { point = Vector3.zero };
             }
 
             crosshairImage.color = realHitPoint != Vector3.zero ? canHookColor : cannotHookColor;
 
-            _predictionHit = raycastHit.point == Vector3.zero ? sphereCastHit : raycastHit;
         }
         public void ActivateController()
         {

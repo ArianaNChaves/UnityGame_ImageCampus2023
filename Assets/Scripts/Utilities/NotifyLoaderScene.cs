@@ -14,5 +14,10 @@ namespace Utilities
         {
             SceneController.Instance.LoadLastestLevel();
         }
+
+        public void LoadNextScene()
+        {
+            SceneController.Instance.LoadNextLevel();
+        }
     }
 }

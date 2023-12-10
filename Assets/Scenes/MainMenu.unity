@@ -823,7 +823,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_1
+          m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &528512604
@@ -1959,6 +1959,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804753446}
   m_CullTransparentMesh: 1
+--- !u!1 &880876378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 880876380}
+  - component: {fileID: 880876379}
+  m_Layer: 0
+  m_Name: AudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &880876379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880876378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a7cef7ef9852c40a2bed49d3f9422e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &880876380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880876378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 585.1947, y: 328.7911, z: 11.019789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889016132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,13 +2865,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds:
-  - soundName: Background
-    clip: {fileID: 8300000, guid: d1f86a1eec532b443b2dce720483fdc6, type: 3}
-  - soundName: Rio Fluyendo
-    clip: {fileID: 8300000, guid: c99e9720be9ce0b448a32872ce94de58, type: 3}
+  - soundName: Menu
+    clip: {fileID: 8300000, guid: 5bc7c389b16a7d3418b75e264cd610bb, type: 3}
+  - soundName: Game 1
+    clip: {fileID: 8300000, guid: 66a81cbeb43379d4297318c99ff83f0a, type: 3}
+  - soundName: Game 2
+    clip: {fileID: 8300000, guid: 040a436de567f7645839033e7e08b9be, type: 3}
   sfxSounds:
-  - soundName: Pajaritos
-    clip: {fileID: 8300000, guid: 75ae1f2b9b5ab824aa0fe620742ec76a, type: 3}
+  - soundName: Hook
+    clip: {fileID: 8300000, guid: 08084d5e391542943a0c66c081ea6abb, type: 3}
+  - soundName: Lose
+    clip: {fileID: 8300000, guid: 9a86389b03bb63b4ba82d189661fdee0, type: 3}
+  - soundName: Win
+    clip: {fileID: 8300000, guid: 43a9ce59d07738442aa4e35d06393926, type: 3}
   musicSource: {fileID: 1386539974}
   sfxSource: {fileID: 375877765}
 --- !u!1 &1386539973
@@ -2841,7 +2891,7 @@ GameObject:
   - component: {fileID: 1386539975}
   - component: {fileID: 1386539974}
   m_Layer: 0
-  m_Name: Music Soruce
+  m_Name: Music Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2859,7 +2909,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.253
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4283,4 +4333,5 @@ SceneRoots:
   - {fileID: 1690442919}
   - {fileID: 1575448557}
   - {fileID: 1310234054}
+  - {fileID: 880876380}
   - {fileID: 1049695306}

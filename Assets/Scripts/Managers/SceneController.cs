@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ui;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +9,7 @@ namespace Managers
 {
     public class SceneController : MonoBehaviour
     {
-        public Action<float> CurrentSceneLoadingProgress;
-
-        private List<string> _scenesLoaded = new List<string>();
+        private List<string> _scenesLoaded;
         private string _currentScene;
         private string _lastestLevel;
     
@@ -43,8 +42,39 @@ namespace Managers
             {
                 _scenesLoaded.Add(sceneName);
             }
-            SceneManager.LoadScene(sceneName);
+         /*   switch (sceneName)
+            {
+                case "Level_1":
+                    AudioManager.Instance.musicSource.Stop();
+                    AudioManager.Instance.PlayMusic("Game 2");
+                    _lastestLevel = "Level_1";
+                    break;
+                case "Level_2":
+                    AudioManager.Instance.musicSource.Stop();
+                    AudioManager.Instance.PlayMusic("Game 1");
+                    _lastestLevel = "Level_2";
+                    break;
+                case "Level_3":
+                    AudioManager.Instance.musicSource.Stop();
+                    AudioManager.Instance.PlayMusic("Game 2");
+                    _lastestLevel = "Level_3";
+                    break;
+                case "GameOver":
+                    AudioManager.Instance.musicSource.Stop();
+                    AudioManager.Instance.PlayEffect("Lose");
+                    break;
+                case "NextLevel":
+                    AudioManager.Instance.musicSource.Stop();
+                    AudioManager.Instance.PlayEffect("Win");
+                    break;
+                case "MainMenu":
+                    AudioManager.Instance.musicSource.Stop();
+                    AudioManager.Instance.PlayMusic("Menu");
+                    break;
+            }*/
             _currentScene = sceneName;
+            AudioController.Instance.ChangeAudio(sceneName);
+            SceneManager.LoadScene(sceneName);
             Debug.Log("Se cargo la escena: " + sceneName);
         }
         
@@ -75,6 +105,27 @@ namespace Managers
         public void LoadLastestLevel()
         {
             LoadScene(_lastestLevel);
+        }
+
+        public void LoadNextLevel()
+        {
+            switch (_lastestLevel)
+            {
+                case "Level_1":
+                    LoadScene("Level_2");
+                    break;
+                case "Level_2":
+                    LoadScene("Level_3");
+                    break;
+                case "Level_3":
+                    LoadScene("MainMenu");
+                    break;
+            }
+        }
+
+        public string GetCurrentScene()
+        {
+            return _currentScene;
         }
     }
 }

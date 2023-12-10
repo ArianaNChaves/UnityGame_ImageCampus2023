@@ -16,7 +16,7 @@ namespace Utilities
                     index++;
                     PlayerPrefs.SetInt("Highest_level", index);
                     PlayerPrefs.Save();
-                    SceneController.Instance.LoadScene("MainMenu");
+                    SceneController.Instance.LoadScene("NextLevel");
             }
 
             

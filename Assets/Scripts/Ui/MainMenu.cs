@@ -11,6 +11,7 @@ namespace Ui
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            PlayerPrefs.DeleteKey("Highest_level");
         }
 
         public void Play(string sceneName)

@@ -83,6 +83,7 @@ namespace Player
             MyInput();
             GroundCheck();
             SpeedControl();
+            Debug.Log(_rigidbody);
         }
 
         private void MyInput()
