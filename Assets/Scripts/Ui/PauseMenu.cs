@@ -28,6 +28,7 @@ namespace Ui
         }
         public void Quit()
         {
+            Time.timeScale = 1f;
             SceneController.Instance.LoadScene("MainMenu");
             Debug.Log("Go to main menu");
         }
