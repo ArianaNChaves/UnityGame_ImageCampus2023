@@ -34,6 +34,13 @@ namespace Managers
             _scenesLoaded = new List<string>();       
             _currentScene = _initialScene;
             _scenesLoaded.Add(_currentScene);
+            _scenesLoaded.Add("LevelSelection");
+            _scenesLoaded.Add("GameOver");
+            _scenesLoaded.Add("Level_1");
+            _scenesLoaded.Add("Level_2");
+            _scenesLoaded.Add("Level_3");
+            _scenesLoaded.Add("Tutorial");
+            _scenesLoaded.Add("NextLevel");
         }
     
         public void LoadScene(string sceneName)
@@ -43,6 +50,7 @@ namespace Managers
                 _scenesLoaded.Add(sceneName);
             }
             _currentScene = sceneName;
+            SetLastestLevel(sceneName);
             AudioController.Instance.ChangeAudio(sceneName);
             SceneManager.LoadScene(sceneName);
             Debug.Log("Se cargo la escena: " + sceneName);
@@ -70,6 +78,21 @@ namespace Managers
         public void LastestLevel(string level)
         {
             _lastestLevel = level;
+        }
+        public void SetLastestLevel(string level)
+        {
+            switch (level)
+            {
+                case "Level_1":
+                    _lastestLevel = "Level_1";
+                    break;
+                case "Level_2":
+                    _lastestLevel = "Level_2";
+                    break;
+                case "Level_3":
+                    _lastestLevel = "Level_3";
+                    break;
+            }
         }
 
         public void LoadLastestLevel()
