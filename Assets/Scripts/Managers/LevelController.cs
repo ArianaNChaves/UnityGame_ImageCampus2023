@@ -13,7 +13,7 @@ namespace Managers
         private int _highestLevel;
         void Awake()
         {
-            _highestLevel = PlayerPrefs.GetInt("a", 1);
+            _highestLevel = PlayerPrefs.GetInt("LevelScore", 1);
 
             for (int i = 0; i < levelButtons.Length; i++)
             {

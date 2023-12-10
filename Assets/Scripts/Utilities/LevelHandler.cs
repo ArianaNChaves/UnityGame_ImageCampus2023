@@ -14,7 +14,7 @@ namespace Utilities
             if (other.CompareTag("Player") && isWin)
             {
                     index++;
-                    PlayerPrefs.SetInt("a", index);
+                    PlayerPrefs.SetInt("LevelScore", index);
                     PlayerPrefs.Save();
                     SceneController.Instance.LoadScene("NextLevel");
             }
