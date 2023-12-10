@@ -10,19 +10,17 @@ namespace Player
         private PlayerController _playerController;
         public enum MovementState
         {
-            Grounded,
+            None,
             Swinging,
-            Falling,
+            Grounded,
         }
     
         private MovementState _currentState;
 
         private void Awake()
         {
-            _currentState = MovementState.Grounded;
             _airPlayerController = GetComponent<AirPlayerController>();
             _playerController = GetComponent<PlayerController>();
-            //_airPlayerController.DeactivateController();
         }
 
         public void SetCurrentState(MovementState state)
@@ -46,8 +44,6 @@ namespace Player
                     _airPlayerController.ActivateController();
                     _currentState = state;
                     Debug.Log("SetCurrentState - Swinging");
-                    break;
-                case MovementState.Falling:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);

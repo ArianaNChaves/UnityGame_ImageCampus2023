@@ -1,10 +1,8 @@
-using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace Ui
+namespace Managers
 {
     public class LevelController : MonoBehaviour
     {
@@ -15,7 +13,7 @@ namespace Ui
         private int _highestLevel;
         void Awake()
         {
-            _highestLevel = PlayerPrefs.GetInt("Highest_level", 1);
+            _highestLevel = PlayerPrefs.GetInt("a", 1);
 
             for (int i = 0; i < levelButtons.Length; i++)
             {

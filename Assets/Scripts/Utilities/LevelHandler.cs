@@ -14,12 +14,10 @@ namespace Utilities
             if (other.CompareTag("Player") && isWin)
             {
                     index++;
-                    PlayerPrefs.SetInt("Highest_level", index);
+                    PlayerPrefs.SetInt("a", index);
                     PlayerPrefs.Save();
                     SceneController.Instance.LoadScene("NextLevel");
             }
-
-            
         }
 
         private void OnCollisionEnter(Collision other)

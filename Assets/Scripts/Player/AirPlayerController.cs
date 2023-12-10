@@ -95,9 +95,9 @@ namespace Player
         private void OnHookPerformed(InputAction.CallbackContext context)
         {
             _playerStateMachine.SetCurrentState(PlayerStateMachine.MovementState.Swinging);
+
             if (_predictionHit.point == Vector3.zero) return;
-            
-               // AudioManager.Instance.PlayEffect("Hook");
+                AudioManager.Instance.PlayEffect("Hook");
                 
                 _hookPoint = _predictionHit.point;
                 _joint = gameObject.AddComponent<SpringJoint>();
@@ -114,7 +114,6 @@ namespace Player
                 _joint.massScale = massScaleValue;
 
                 lineRenderer.positionCount = lineRendererPositions;
-                
         }
 
         private void OnHookLateralMovementPerformed(InputAction.CallbackContext context)

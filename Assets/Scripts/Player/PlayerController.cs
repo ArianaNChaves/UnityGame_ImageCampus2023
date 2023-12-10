@@ -44,7 +44,8 @@ namespace Player
         private void Start()
         {
              OnEnable();
-            _isReadyToJump = true;
+             _playerStateMachine.SetCurrentState(PlayerStateMachine.MovementState.Grounded);
+             _isReadyToJump = true;
         }
 
         public void ActivateController()
@@ -83,7 +84,7 @@ namespace Player
             MyInput();
             GroundCheck();
             SpeedControl();
-            Debug.Log(_rigidbody);
+            
         }
 
         private void MyInput()

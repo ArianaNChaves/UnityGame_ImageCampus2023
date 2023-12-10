@@ -42,36 +42,6 @@ namespace Managers
             {
                 _scenesLoaded.Add(sceneName);
             }
-         /*   switch (sceneName)
-            {
-                case "Level_1":
-                    AudioManager.Instance.musicSource.Stop();
-                    AudioManager.Instance.PlayMusic("Game 2");
-                    _lastestLevel = "Level_1";
-                    break;
-                case "Level_2":
-                    AudioManager.Instance.musicSource.Stop();
-                    AudioManager.Instance.PlayMusic("Game 1");
-                    _lastestLevel = "Level_2";
-                    break;
-                case "Level_3":
-                    AudioManager.Instance.musicSource.Stop();
-                    AudioManager.Instance.PlayMusic("Game 2");
-                    _lastestLevel = "Level_3";
-                    break;
-                case "GameOver":
-                    AudioManager.Instance.musicSource.Stop();
-                    AudioManager.Instance.PlayEffect("Lose");
-                    break;
-                case "NextLevel":
-                    AudioManager.Instance.musicSource.Stop();
-                    AudioManager.Instance.PlayEffect("Win");
-                    break;
-                case "MainMenu":
-                    AudioManager.Instance.musicSource.Stop();
-                    AudioManager.Instance.PlayMusic("Menu");
-                    break;
-            }*/
             _currentScene = sceneName;
             AudioController.Instance.ChangeAudio(sceneName);
             SceneManager.LoadScene(sceneName);
@@ -113,12 +83,15 @@ namespace Managers
             {
                 case "Level_1":
                     LoadScene("Level_2");
+                    _lastestLevel = "Level_2";
                     break;
                 case "Level_2":
                     LoadScene("Level_3");
+                    _lastestLevel = "Level_3";
                     break;
                 case "Level_3":
                     LoadScene("MainMenu");
+                    _lastestLevel = "Level_3";
                     break;
             }
         }
@@ -126,6 +99,10 @@ namespace Managers
         public string GetCurrentScene()
         {
             return _currentScene;
+        }
+        public string GetLastestLevel()
+        {
+            return _lastestLevel;
         }
     }
 }
